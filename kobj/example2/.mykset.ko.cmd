@@ -1,0 +1,1 @@
+savedcmd_/home/kuo/Desktop/dir/LDD/kobj/example2/mykset.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/kuo/Desktop/dir/LDD/kobj/example2/mykset.ko /home/kuo/Desktop/dir/LDD/kobj/example2/mykset.o /home/kuo/Desktop/dir/LDD/kobj/example2/mykset.mod.o;  make -f ./arch/x86/Makefile.postlink /home/kuo/Desktop/dir/LDD/kobj/example2/mykset.ko

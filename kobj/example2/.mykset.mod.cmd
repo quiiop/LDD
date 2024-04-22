@@ -1,0 +1,1 @@
+savedcmd_/home/kuo/Desktop/dir/LDD/kobj/example2/mykset.mod := printf '%s\n'   mykset.o | awk '!x[$$0]++ { print("/home/kuo/Desktop/dir/LDD/kobj/example2/"$$0) }' > /home/kuo/Desktop/dir/LDD/kobj/example2/mykset.mod

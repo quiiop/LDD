@@ -1,1 +1,0 @@
-savedcmd_/home/kuo/Desktop/dir/LDD/Test/Test1/hello.mod := printf '%s\n'   hello.o | awk '!x[$$0]++ { print("/home/kuo/Desktop/dir/LDD/Test/Test1/"$$0) }' > /home/kuo/Desktop/dir/LDD/Test/Test1/hello.mod

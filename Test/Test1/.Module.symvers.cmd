@@ -1,1 +1,0 @@
-savedcmd_/home/kuo/Desktop/dir/LDD/Test/Test1/Module.symvers :=  scripts/mod/modpost -m -a      -o /home/kuo/Desktop/dir/LDD/Test/Test1/Module.symvers -T /home/kuo/Desktop/dir/LDD/Test/Test1/modules.order -i Module.symvers -e 

@@ -1,0 +1,1 @@
+// hello.c read, write operation尚未實現, 記得補完

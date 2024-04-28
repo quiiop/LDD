@@ -1,0 +1,1 @@
+savedcmd_/home/kuo/Desktop/LDD/ch4/seq_file.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/kuo/Desktop/LDD/ch4/seq_file.ko /home/kuo/Desktop/LDD/ch4/seq_file.o /home/kuo/Desktop/LDD/ch4/seq_file.mod.o;  make -f ./arch/x86/Makefile.postlink /home/kuo/Desktop/LDD/ch4/seq_file.ko

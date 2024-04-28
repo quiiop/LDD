@@ -59,6 +59,24 @@ int hello_open(struct inode *inode,
     return 0;
 }   
 
+ssize_t hello_read(struct file *filp, 
+                    char __user *buff, 
+                    size_t count, 
+                    loff_t *f_ops)
+{
+    int retval = 0;
+    
+    if (count > device_max_size){
+        printk(KERN_WARNING "[LEO] hello: trying to read more than possible. Aborting read\n");
+        retval = -EFBIG;
+    }
+    
+    int n = copy_to_user(buff, (void *)hello_devices->p_data, count); 
+    printk(KERN_INFO "[KUO] READ : copy %d char\n", n);
+
+    return retval;
+}
+
 int hello_release(struct inode *inode,
                     struct file *filp)
 {
@@ -140,6 +158,7 @@ static __init int hello_init(void)
         result = -ENOMEM;
         printk(KERN_WARNING "[KUO] hello_devices->p_data apply failed\n");
     }
+    hello_devices->p_data = "Hello KUO";
 
     /*3. 初始化 struct cdev*/
     hello_setup_cdev(hello_devices);

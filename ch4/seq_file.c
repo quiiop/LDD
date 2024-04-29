@@ -64,37 +64,45 @@ static void *my_start(struct seq_file *m, loff_t *pos) // pos是現在的位置
         return NULL;
     }
 
+    printk(KERN_INFO "[KUO] start(): before pos %ld, item = %d\n", *pos, Array[*pos]);
+
     *array_index = *pos +1;
 
+    printk(KERN_INFO "[KUO] start(): after pos %ld, item = %d\n", *array_index, Array[*array_index]);
 	return array_index;
 }
 
-/* *v為現在read buffer的位置 , pos為 */
+/*.next()的* v parameter才是目前讀到的位置 , pos是strutc seq_file->index*/
 static void *my_next(struct seq_file *m, void *v, loff_t *pos)
 {
     unsigned long *array_index = (unsigned long *)v;
-    
-    if (++(*array_index) >= SIZE){
-        PDEBUG("[my_start]: array_index >= SIZE\n");
+    printk(KERN_INFO "[KUO] next(): before pos %ld, item = %d\n", *array_index, Array[*array_index]);
+    ++*array_index; 
+    printk(KERN_INFO "[KUO] next(): after pos %ld, item = %d\n", *array_index, Array[*array_index]);
+
+    if (*array_index >= SIZE){
+        PDEBUG("[my_next]: array_index >= SIZE\n");
+        return NULL; // 一定要return
     }
-    return NULL;
+    
+    return (void *)array_index; // 一定要return
 }
 
 static void my_stop(struct seq_file *m, void *v)
 {
+    PDEBUG("[my_stop]: free sequence file------------------------\n");
     for (int i=0; i<SIZE; i++){
         Array[i] = 0;
     }
     kfree(v);
-    PDEBUG("[my_stop]: free sequence file\n");
 }
 
 static int my_show(struct seq_file *m, void *v) // v是現在的跌代器
 {
     unsigned long *array_index = (unsigned long *)v;
+    PDEBUG("[my_show]: show data-------------------------------\n");
     /*void seq_printf(struct seq_file *m, const char *fmt, ...);*/
     seq_printf(m, "Array[%ld] = %d\n", *array_index, Array[(*array_index)]);
-    PDEBUG("[my_show]: show data\n");
     return 0;
 }
 
@@ -137,6 +145,9 @@ static struct proc_ops my_file_ops = {
 
 static void KUO_cleanup_module(void)
 {
+    printk(KERN_INFO "[KUO] cleanup module remove sequence file\n");
+    /*記得要要先關掉proc subtree , 要堧無法移除seq_file*/
+    remove_proc_subtree(PROC_NAME, NULL);
     remove_proc_entry(PROC_NAME, entry);
 }
 
@@ -149,7 +160,7 @@ proc_create( )會負責建立/proc/序列文件
 static int __init KUO_init_module(void)
 {
     /*/proc/序列文件的文件名稱*/
-    PROC_NAME = "KUO_seq_file";
+    PROC_NAME = "KUO_seq_file_11";
     
     PDEBUG("[KUO init_module] int module function \n");
     entry = proc_create(PROC_NAME,0,

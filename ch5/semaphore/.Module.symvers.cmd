@@ -1,0 +1,1 @@
+savedcmd_/home/kuo/Desktop/LDD/ch5/semaphore/Module.symvers :=  scripts/mod/modpost -m -a      -o /home/kuo/Desktop/LDD/ch5/semaphore/Module.symvers -T /home/kuo/Desktop/LDD/ch5/semaphore/modules.order -i Module.symvers -e 

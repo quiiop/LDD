@@ -30,7 +30,7 @@ int main()
     }
 
     /*read operation*/
-    /*char a[1000];
+    char a[1000];
     char b[1000];
 
     //reading a
@@ -48,7 +48,7 @@ int main()
             printf("string read %s \n",b);
         }
         //sleep(5); 
-    }*/
+    }
 
     /* Close operation */
     if (close(fd)){

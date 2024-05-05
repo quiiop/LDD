@@ -20,14 +20,14 @@ int main()
 
     /*write operation*/
     char w_b[12];
-    /*strcpy(w_b,"1111111");
+    strcpy(w_b,"1111111");
     result = write(fd, (void*) w_b, 12);
     if ( result != 0 ){
         printf("Oh dear, something went wrong with write()! %s, result = %d\n", strerror(errno), result);
     }
     else{
         printf("write operation executed succesfully\n");
-    }*/
+    }
 
     /*read operation*/
     char a[1000];
@@ -35,7 +35,7 @@ int main()
 
     //reading a
     while(1){
-        // result = write(fd, (void*) w_b, 12);
+        result = write(fd, (void*) w_b, 12);
         if ( result != 0 ){
             printf("Oh dear, something went wrong with write()! %s, result = %d\n", strerror(errno), result);
         }

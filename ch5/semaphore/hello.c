@@ -79,7 +79,7 @@ ssize_t hello_read(struct file *filp, char __user *buf, size_t count, loff_t *f_
     }
 
     // 成功复制数据后立即释放信号量 
-    // up(&(hello_devices->sem_hello));
+    up(&(hello_devices->sem_hello));
     return retval; // 返回值为 0 表示成功
 
     out_and_Vsem: // 即便失敗也要釋放semaphore
@@ -92,8 +92,7 @@ ssize_t hello_read(struct file *filp, char __user *buf, size_t count, loff_t *f_
 /*把user space資料傳道hello_devices->p_data*/
 ssize_t hello_write(struct file *filp, const char __user *buf, size_t count, loff_t *f_pos)
 {
-    up(&(hello_devices->sem_hello));
-    /*int retval = 0;
+    int retval = 0;
     if (count > device_max_size){
         printk(KERN_WARNING "[KUO] hello: trying to write more than possible. Aborting write\n");
         retval = -EFBIG;
@@ -120,7 +119,6 @@ ssize_t hello_write(struct file *filp, const char __user *buf, size_t count, lof
         return retval;
     out:
         return retval;
-    */
    return 0;
 }
 

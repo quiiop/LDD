@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "test_ioctl_01.h": "c"
+        "test_ioctl_01.h": "c",
+        "fops.h": "c",
+        "sched.h": "c"
     }
 }

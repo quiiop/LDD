@@ -191,6 +191,7 @@ long my_unlocked_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
         buffer_in_use = FIRST_BUFFER;
         up(&(my_dev->sem_ioctl_01));
         break;
+
     case SET_SECOND_BIFFER:
         printk(KERN_INFO "SET_SECOND_BIFFER\n");
         if (down_interruptible(&(my_dev->sem_ioctl_01))){
@@ -200,6 +201,7 @@ long my_unlocked_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
         buffer_in_use = SECOND_BUFFER;
         up(&(my_dev->sem_ioctl_01));
         break;
+
     case WHICH_BUFFER_USE:
         printk(KERN_INFO "[KUO] WHICH_BUFFER_USE\n");
         printk(KERN_INFO "[KUO] buffer_in_use %d\n", buffer_in_use);
@@ -207,6 +209,7 @@ long my_unlocked_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
         printk(KERN_INFO "[KUO] user provide user buffer addr %p\n", ((int __user*)arg));
         // return buffer_in_use;
         break;
+
     case SET_WHICH_BUFFER_USE:
         printk(KERN_INFO "[KUO] SET_WHICH_BUFFER\n");
         if (down_interruptible(&(my_dev->sem_ioctl_01))){
@@ -222,6 +225,7 @@ long my_unlocked_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
         }
         up(&(my_dev->sem_ioctl_01));
         break;
+        
     default:
         return -ENOTTY;
     }

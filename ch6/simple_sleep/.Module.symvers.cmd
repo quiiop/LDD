@@ -1,0 +1,1 @@
+savedcmd_/home/kuo/Desktop/LDD/ch6/simple_sleep/Module.symvers :=  scripts/mod/modpost -m -a      -o /home/kuo/Desktop/LDD/ch6/simple_sleep/Module.symvers -T /home/kuo/Desktop/LDD/ch6/simple_sleep/modules.order -i Module.symvers -e 

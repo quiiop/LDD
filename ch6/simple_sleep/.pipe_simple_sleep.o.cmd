@@ -1,0 +1,1 @@
+savedcmd_/home/kuo/Desktop/LDD/ch6/simple_sleep/pipe_simple_sleep.o := ld -m elf_x86_64 -z noexecstack   -r -o /home/kuo/Desktop/LDD/ch6/simple_sleep/pipe_simple_sleep.o @/home/kuo/Desktop/LDD/ch6/simple_sleep/pipe_simple_sleep.mod 

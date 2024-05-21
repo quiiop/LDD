@@ -1,0 +1,1 @@
+savedcmd_/home/kuo/Desktop/LDD/ch6/poll_test/poll.mod := printf '%s\n'   main.o fops.o | awk '!x[$$0]++ { print("/home/kuo/Desktop/LDD/ch6/poll_test/"$$0) }' > /home/kuo/Desktop/LDD/ch6/poll_test/poll.mod

@@ -1,0 +1,1 @@
+savedcmd_/home/kuo/Desktop/LDD/ch6/simple_sleep/pipe_simple_sleep.mod := printf '%s\n'   main.o fops.o | awk '!x[$$0]++ { print("/home/kuo/Desktop/LDD/ch6/simple_sleep/"$$0) }' > /home/kuo/Desktop/LDD/ch6/simple_sleep/pipe_simple_sleep.mod
